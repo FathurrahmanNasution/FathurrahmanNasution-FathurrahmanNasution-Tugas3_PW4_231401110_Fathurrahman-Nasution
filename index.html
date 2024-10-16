@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Picture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #67bdf3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgb(167, 215, 248);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .picture-box {
+            width: 300px;
+            height: 300px;
+            background-color: #e0e0e0; /* ini buat kotak abu" sebelom di tunjukkan gambarnya*/
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #ccc;
+            overflow: hidden;
+        }
+        .picture-box img {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #2fcc76;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Siapakah Orang yang Tersembunyi Disini?</h1>
+
+        <div class="picture-box" id="pictureBox">
+            <img id="personImage" src="frieren.jpg" alt="gambar">
+        </div>
+
+        <button id="togglePicture">Tampilkan foto</button>
+        <button id="whoIsThis">Siapakah Nama entitas tersebut?</button>
+    </div>
+
+    <script>
+        let isPictureShown = false; // Variable untuk ngecek apa gambarnya muncul atau hidden
+
+        // Event listener untuk tombol "tunjukkan/Sembunyikan gambar"
+        document.getElementById('togglePicture').addEventListener('click', function() {
+            const img = document.getElementById('personImage');
+            const button = document.getElementById('togglePicture');
+            
+            if (!isPictureShown) {
+                img.style.display = 'block'; // tunjukkan the image
+                button.textContent = 'Sembunyikan Gambar'; // untuk ganti tulisan di tombol
+                isPictureShown = true;
+            } else {
+                img.style.display = 'none'; // sembunyiin gambar
+                button.textContent = 'Tampilkan Gambar'; // kemabiin tulisan jadi semula 
+                isPictureShown = false;
+            }
+        });
+
+        // ini Event listener buat tombol Siapa Namanya
+        document.getElementById('whoIsThis').addEventListener('click', function() {
+            if (isPictureShown) {
+                alert("Namanya adalah Frieren.");
+            } else {
+                alert("Anda harus reveal foto dulu!");
+            }
+        });
+    </script>
+
+</body>
+</html>
